@@ -563,8 +563,20 @@ install_dependencies(){
         yum_depends=(
             unzip gzip openssl openssl-devel gcc python python-devel python-setuptools pcre pcre-devel libtool libevent
             autoconf automake make curl curl-devel zlib-devel perl perl-devel cpio expat-devel gettext-devel
-            libev-devel c-ares-devel git qrencode
+            libev-devel c-ares-devel qrencode
         )
+        # git does not work
+        # sudo yum install git
+
+# yum clean all
+# rpm --rebuilddb
+# yum update
+# yum clean all
+# yum reinstall glibc glibc-common libgcc
+# yum upgrade
+# yum install yum-utils
+# package-cleanup --problems
+# package-cleanup --dupes
         for depend in ${yum_depends[@]}; do
             error_detect_depends "yum -y install ${depend}"
         done
